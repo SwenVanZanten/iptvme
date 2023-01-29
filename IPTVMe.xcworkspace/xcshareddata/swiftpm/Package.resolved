@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "cache",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/hyperoslo/Cache.git",
+      "state" : {
+        "revision" : "c7f4d633049c3bd649a353bad36f6c17e9df085f",
+        "version" : "6.0.0"
+      }
+    },
+    {
+      "identity" : "swiftui-cached-async-image",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/lorenzofiamingo/swiftui-cached-async-image",
+      "state" : {
+        "branch" : "main",
+        "revision" : "f94be38411297c71aa8df69c6875127e6d8d7a92"
+      }
+    }
+  ],
+  "version" : 2
+}
