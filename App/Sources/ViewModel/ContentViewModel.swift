@@ -6,7 +6,6 @@ class ContentViewModel: ObservableObject {
     @Published var imageStorage: Storage<String, Image>
     @Published var api: Api = Api(host: "", username: "", password: "")
 
-    @Published var selectedTab: String = "Live TV"
     @Published var minifiedPlayer: Bool = false
     
     init() {

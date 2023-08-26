@@ -3,6 +3,10 @@ import XtreamCodesKit
 import CloudKit
 
 class LiveTVChannelsViewModel: ObservableObject {
+    enum LiveTVChannelsViewModelError: Error {
+        case noRecordIDSetError(channel: Channel)
+    }
+    
     /// The CloudKit container to use.
     private let container = CKContainer(identifier: Config.cloudKitContainerIdentifier)
 
@@ -52,8 +56,18 @@ class LiveTVChannelsViewModel: ObservableObject {
         //
     }
 
-    func deleteChannel(_ channel: Channel) {
-        //
+    func deleteChannel(_ channel: Channel) async throws {
+        guard let recordId = channel.id else {
+            throw LiveTVChannelsViewModelError.noRecordIDSetError(channel: channel)
+        }
+        
+        let record = try await database.deleteRecord(withID: recordId)
+        
+        DispatchQueue.main.async {
+            self.channels = self.channels.filter({ channel in
+                return channel.id != record
+            })
+        }
     }
 
     func fetchChannels(by category: LiveTVCategory) {

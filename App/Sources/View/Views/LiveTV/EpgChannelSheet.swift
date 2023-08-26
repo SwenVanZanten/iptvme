@@ -16,7 +16,7 @@ struct EpgChannelSheet: View {
                     Text("No programming found")
                         .padding()
                         .background {
-                            RoundedRectangle(cornerRadius: 15)
+                            RoundedRectangle(cornerRadius: 10)
                                 .fill(.secondary.opacity(0.15))
                         }
                 } else if loading {
@@ -65,7 +65,7 @@ struct EpgChannelSheet: View {
                 }
                 .padding()
                 .background {
-                    RoundedRectangle(cornerRadius: 15)
+                    RoundedRectangle(cornerRadius: 10)
                         .fill(.secondary.opacity(0.15))
                 }
                 

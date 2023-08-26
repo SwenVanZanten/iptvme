@@ -19,7 +19,7 @@ struct Channel: Identifiable {
     {
         self.init(
             name: record["name"] as! String,
-            categoryId: CKRecord.ID(recordName: record["categoryId"] as! String),
+            categoryId: (record["category"] as! CKRecord.Reference).recordID,
             liveSteam: .init(
                 id: record["identifier"] as! Int,
                 number: record["number"] as! Int,

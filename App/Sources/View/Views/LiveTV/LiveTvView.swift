@@ -48,15 +48,36 @@ let exampleMedias: [LiveStream] = [
 struct LiveTvView: View {
     @EnvironmentObject var contentData: ContentViewModel
     @Environment(\.openWindow) var openWindow
-    @StateObject var liveTvCategoriesVM = LiveTVCategoriesViewModel()
+    @StateObject private var liveTVCategoriesVM: LiveTVCategoriesViewModel
     @State var showAddPinnedModal: Bool = false
     @State var showAddCategorySheet: Bool = false
     @State var search: String = ""
+    @State var dragOver: Bool = false
+    
+    private var subscription: Subscription
+    
+    init(subscription: Subscription) {
+        _liveTVCategoriesVM = StateObject(wrappedValue: LiveTVCategoriesViewModel(subscription: subscription))
+        
+        self.subscription = subscription
+    }
     
     var body: some View {
-        ScrollView {
-            VStack {
-                if exampleMedias.count > 0 {
+        NavigationStack {
+            ScrollView {
+                VStack {
+                    HStack {
+                        NavigationLink(destination: BrowseChannelView()) {
+                            Label("Browse", systemImage: "list.triangle")
+                        }
+                            .buttonStyle(.borderedProminent)
+                            .controlSize(.large)
+                        
+                        Spacer()
+                    }
+                    
+                    Divider()
+                    
                     HStack {
                         Image(systemName: "pin.fill")
                         Text("Pinned Channels")
@@ -85,55 +106,76 @@ struct LiveTvView: View {
                             }, media: media)
                         }
                     }
-                }
-                
-                Divider()
-                
-                HStack {
-                    Image(systemName: "rectangle.3.group.fill")
-                    Text("Categories")
-                        .font(.title2.weight(.semibold))
+                    
+                    Divider()
+                    
+                    HStack {
+                        Image(systemName: "rectangle.3.group.fill")
+                        Text("Categories")
+                            .font(.title2.weight(.semibold))
+                        
+                        Spacer()
+                        
+                        Button {
+                            showAddCategorySheet = true
+                        } label: {
+                            Image(systemName: "plus")
+                        }
+                        .buttonStyle(.plain)
+                    }
+                    .padding(.top, 15)
+                    
+                    LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 15), count: 3), spacing: 15) {
+                        
+                        ForEach(liveTVCategoriesVM.categories) { category in
+                            NavigationLink(
+                                destination: LiveTvCategoryView()
+                                    .environmentObject(LiveTVChannelsViewModel(category: category))
+                            ) {
+                                CategoryButton(category: category)
+                                    .onDrag {
+                                        liveTVCategoriesVM.currentGrid = category
+                                        return NSItemProvider(object: String(category.name) as NSString)
+                                    }
+                                    .onDrop(of: [.text], delegate: DropViewDelegate(category: category, gridData: liveTVCategoriesVM))
+                            }
+                            .buttonStyle(.plain)
+                            .contextMenu {
+                                Button("Open") {
+                                    print("open")
+                                }
+                                Divider()
+                                Button("Delete") {
+                                    Task {
+                                        do {
+                                            try await liveTVCategoriesVM.deleteCategory(category)
+                                        } catch {
+                                            print(error)
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                     
                     Spacer()
-                    
-                    Button {
-                        showAddCategorySheet = true
-                    } label: {
-                        Image(systemName: "plus")
-                    }
-                    .buttonStyle(.plain)
                 }
-                .padding(.top, 15)
-                
-                LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 15), count: 3), spacing: 15) {
-                    
-                    ForEach(liveTvCategoriesVM.categories) { category in
-                        NavigationLink(
-                            destination: LiveTvCategoryView()
-                            .environmentObject(LiveTVChannelsViewModel(category: category))
-                        ) {
-                            CategoryButton(category: category)
-                        }.buttonStyle(.borderless)
-                    }
+                .padding()
+            }
+            .sheet(isPresented: $showAddCategorySheet) {
+                AddCategorySheet()
+            }
+            .toolbar {
+                ToolbarItem {
+                    TextField("Search your channel", text: $search)
+                        .textFieldStyle(.roundedBorder)
+                        .frame(minWidth: 200)
                 }
-                
-                Spacer()
             }
-            .padding()
-        }
-        .sheet(isPresented: $showAddCategorySheet) {
-            AddCategorySheet()
-                .environmentObject(liveTvCategoriesVM)
-        }
-        .toolbar {
-            ToolbarItem {
-                TextField("Search your channel", text: $search)
-                    .textFieldStyle(.roundedBorder)
-                    .frame(minWidth: 200)
+            .task {
+                liveTVCategoriesVM.fetchGategories()
             }
-        }
-        .task {
-            liveTvCategoriesVM.fetchGategories()
+            .environmentObject(liveTVCategoriesVM)
         }
     }
 }
@@ -151,7 +193,6 @@ struct PinnedLiveTvButton: View {
             VStack(spacing: 0) {
                 ZStack(alignment: .topLeading) {
                     Color.red
-//                    StreamThumbnail(url: media.getUrl(api: contentData.api, containerExtension: ".m3u8"))
                     
                     CachedAsyncImage(url: media.icon) { image in
                         image
@@ -214,15 +255,47 @@ struct CategoryButton: View {
             RoundedRectangle(cornerRadius: 10)
                 .fill(category.color)
         }
+        .overlay(Rectangle().fill(category.color).frame(width: 5), alignment: .leading)
         .cornerRadius(10)
         .contentShape(RoundedRectangle(cornerRadius: 10))
         .foregroundColor(.white)
     }
 }
 
-struct LiveView_Previews: PreviewProvider {
-    static var previews: some View {
-        LiveTvView()
-            .frame(minWidth: 600, minHeight: 400)
+struct DropViewDelegate: DropDelegate {
+    var category: LiveTVCategory
+    var gridData: LiveTVCategoriesViewModel
+    
+    func performDrop(info: DropInfo) -> Bool {
+        return true
+    }
+    
+    func dropEntered(info: DropInfo) {
+        let fromIndex = gridData.categories.firstIndex { (category) -> Bool in
+            return category.id == gridData.currentGrid?.id
+        } ?? 0
+        
+        let toIndex = gridData.categories.firstIndex { (category) -> Bool in
+            return category.id == self.category.id
+        } ?? 0
+        
+        if fromIndex != toIndex{
+            withAnimation(.default){
+                let fromGrid = gridData.categories[fromIndex]
+                gridData.categories[fromIndex] = gridData.categories[toIndex]
+                gridData.categories[toIndex] = fromGrid
+            }
+        }
+    }
+    
+    func dropUpdated(info: DropInfo) -> DropProposal? {
+        return DropProposal(operation: .move)
     }
 }
+
+//struct LiveView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LiveTvView()
+//            .frame(minWidth: 600, minHeight: 400)
+//    }
+//}

@@ -17,6 +17,15 @@
         "branch" : "main",
         "revision" : "f94be38411297c71aa8df69c6875127e6d8d7a92"
       }
+    },
+    {
+      "identity" : "swiftuiformvalidator",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ShabanKamell/SwiftUIFormValidator.git",
+      "state" : {
+        "revision" : "f53df07ac1384c2f9ee488bd229821d0ab341174",
+        "version" : "0.20.0"
+      }
     }
   ],
   "version" : 2

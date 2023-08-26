@@ -5,13 +5,11 @@ import XtreamCodesKit
 struct IPTVMeApp: App {
     @Environment(\.openWindow) private var openWindow
     @Environment(\.dismiss) var dismiss
+    @StateObject var subscriptionVM: SubscriptionViewModel = SubscriptionViewModel()
     @StateObject var contentVM: ContentViewModel = ContentViewModel()
     
-    @State var showContentView: Bool = false
-    @State var subscription: Subscription? = nil
-    
     var body: some Scene {
-        #if os(macOS)
+#if os(macOS)
         WindowGroup("", id: "select-subscription") {
             SubscriptionView { subscription in
                 NSApplication.shared.keyWindow?.close()
@@ -22,10 +20,17 @@ struct IPTVMeApp: App {
                     password: subscription.password
                 )
                 
+                subscriptionVM.selectedSubscription = subscription
+                
                 openWindow(value: subscription)
             }
+            .frame(width: 800, height: 450)
+            .environmentObject(subscriptionVM)
+            .tint(.red)
         }
-        .defaultSize(width: 300, height: 500)
+        .windowResizability(.contentMinSize)
+        .windowStyle(.hiddenTitleBar)
+        .defaultSize(width: 800, height: 450)
         
         WindowGroup(for: Subscription.self) { $subscription in
             if let subscription = subscription {
@@ -43,6 +48,7 @@ struct IPTVMeApp: App {
                 }
                 .frame(minWidth: 900, minHeight: 600)
                 .environmentObject(contentVM)
+                .tint(.red)
             }
         }
         .defaultSize(width: 900, height: 600)
@@ -59,11 +65,25 @@ struct IPTVMeApp: App {
                             }
                         }
                     }
+                    .tint(.red)
             }
         }
-        #else
+#else
         WindowGroup {
-            NavigationStack {
+            if let subscription = subscriptionVM.selectedSubscription {
+                ContentView(subscription: subscription) {
+                    subscriptionVM.selectedSubscription = nil
+                }
+                    .task {
+                        contentVM.api = Api(
+                            host: subscription.host,
+                            username: subscription.username,
+                            password: subscription.password
+                        )
+                    }
+                    .environmentObject(contentVM)
+                    .tint(.red)
+            } else {
                 SubscriptionView { subscription in
                     contentVM.api = Api(
                         host: subscription.host,
@@ -71,24 +91,12 @@ struct IPTVMeApp: App {
                         password: subscription.password
                     )
                     
-                    self.subscription = subscription
-                    showContentView = true
+                    self.subscriptionVM.selectedSubscription = subscription
                 }
-                .navigationDestination(isPresented: $showContentView) {
-                    if let subscription = self.subscription {
-                        ContentView(subscription: subscription)
-                        .task {
-                            contentVM.api = Api(
-                                host: subscription.host,
-                                username: subscription.username,
-                                password: subscription.password
-                            )
-                        }
-                        .environmentObject(contentVM)
-                    }
-                }
+                .environmentObject(subscriptionVM)
+                .tint(.red)
             }
         }
-        #endif
+#endif
     }
 }

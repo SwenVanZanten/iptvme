@@ -79,6 +79,7 @@ public struct LiveStream: MediaObject, Decodable, Encodable {
     }
     
     public func getUrl(api: Api, containerExtension: String = "") -> URL {
+        print("\(api.host)/live/\(api.username)/\(api.password)/\(self.id)\(containerExtension)")
         return URL(string: "\(api.host)/live/\(api.username)/\(api.password)/\(self.id)\(containerExtension)")!
     }
     

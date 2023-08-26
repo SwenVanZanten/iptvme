@@ -106,10 +106,10 @@ struct ArchiveChannelSheetButton: View {
             }
             .padding()
             .background {
-                RoundedRectangle(cornerRadius: 15)
+                RoundedRectangle(cornerRadius: 10)
                     .fill(.secondary.opacity(0.15))
             }
-            .contentShape(RoundedRectangle(cornerRadius: 15))
+            .contentShape(RoundedRectangle(cornerRadius: 10))
         }
         .buttonStyle(.plain)
     }

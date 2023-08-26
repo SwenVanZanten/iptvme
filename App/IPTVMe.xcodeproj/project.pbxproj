@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		A303DDD628E223C500C283A2 /* SubscriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A303DDD528E223C500C283A2 /* SubscriptionViewModel.swift */; };
 		A303DDD928E2DEC000C283A2 /* Cache in Frameworks */ = {isa = PBXBuildFile; productRef = A303DDD828E2DEC000C283A2 /* Cache */; };
+		A3052B5D2997EFEB0045793F /* SubscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3052B5C2997EFEB0045793F /* SubscriptionView.swift */; };
+		A308B089299A5C53009C9247 /* LiveTVFavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A308B088299A5C53009C9247 /* LiveTVFavoritesViewModel.swift */; };
+		A308B08B299A5D0B009C9247 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = A308B08A299A5D0B009C9247 /* Favorite.swift */; };
+		A308B08D299A8186009C9247 /* CategoryForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = A308B08C299A8186009C9247 /* CategoryForm.swift */; };
 		A313A54D292A64200025E8E2 /* LiveTvCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A313A54C292A64200025E8E2 /* LiveTvCategoryView.swift */; };
 		A319CAD728E5E096007A3C95 /* LiveTvPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A319CAD628E5E096007A3C95 /* LiveTvPlayerView.swift */; };
 		A319CADB28E5F0AF007A3C95 /* EpgChannelSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A319CADA28E5F0AF007A3C95 /* EpgChannelSheet.swift */; };
@@ -17,22 +21,33 @@
 		A31FDA2828D1005300DED3B8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A31FDA2728D1005300DED3B8 /* Preview Assets.xcassets */; };
 		A31FDA3228D1013200DED3B8 /* TabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31FDA3128D1013200DED3B8 /* TabButton.swift */; };
 		A31FDA3428D1031300DED3B8 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31FDA3328D1031300DED3B8 /* ContentViewModel.swift */; };
+		A3250CB6299012A200E6E98A /* FormValidator in Frameworks */ = {isa = PBXBuildFile; productRef = A3250CB5299012A200E6E98A /* FormValidator */; };
+		A3250CC12990137000E6E98A /* SubscriptionForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3250CC02990137000E6E98A /* SubscriptionForm.swift */; };
 		A32A7D592981DE3E0097AEEE /* ArchiveChannelSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32A7D582981DE3E0097AEEE /* ArchiveChannelSheet.swift */; };
 		A32A7D5B2982DA920097AEEE /* Playable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32A7D5A2982DA920097AEEE /* Playable.swift */; };
 		A3313CC429760C060096FC59 /* AddCategorySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3313CC329760C060096FC59 /* AddCategorySheet.swift */; };
 		A34B72A128D135D40021F910 /* XtreamCodesKit in Frameworks */ = {isa = PBXBuildFile; productRef = A34B72A028D135D40021F910 /* XtreamCodesKit */; };
 		A34B72A428D135EE0021F910 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = A34B72A328D135EE0021F910 /* CachedAsyncImage */; };
 		A34B72A628D139DF0021F910 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34B72A528D139DF0021F910 /* Category.swift */; };
-		A34B72AC28D14B780021F910 /* SubscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34B72AB28D14B780021F910 /* SubscriptionView.swift */; };
 		A34B72B328D1D3890021F910 /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34B72B228D1D3890021F910 /* GroupView.swift */; };
 		A34B72B528D1E4E90021F910 /* StreamThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34B72B428D1E4E90021F910 /* StreamThumbnail.swift */; };
+		A357C2B62A9209BB001809B3 /* CKRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = A357C2B52A9209BB001809B3 /* CKRecord.swift */; };
+		A357C2B82A924E82001809B3 /* BrowseChannelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A357C2B72A924E82001809B3 /* BrowseChannelView.swift */; };
+		A357C2BB2A925269001809B3 /* ChooseCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A357C2BA2A925269001809B3 /* ChooseCategoryView.swift */; };
+		A357C2BD2A925274001809B3 /* ChooseChannelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A357C2BC2A925274001809B3 /* ChooseChannelView.swift */; };
 		A37D8F942981AC4A00ED7E2A /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37D8F932981AC4A00ED7E2A /* PlayerView.swift */; };
+		A3AD77BD299A25AB00145EFB /* AddSubscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AD77BC299A25AB00145EFB /* AddSubscriptionView.swift */; };
+		A3AD77BF299A25EF00145EFB /* SubscriptionsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AD77BE299A25EF00145EFB /* SubscriptionsListView.swift */; };
+		A3AD77C1299A267600145EFB /* SubscriptionDetailSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AD77C0299A267600145EFB /* SubscriptionDetailSheetView.swift */; };
 		A3B2DDF0297999B50017CBCE /* LiveTVCategoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B2DDEF297999B50017CBCE /* LiveTVCategoriesViewModel.swift */; };
 		A3B2DDF2297999E80017CBCE /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B2DDF1297999E80017CBCE /* Config.swift */; };
 		A3B2DDF42979A8540017CBCE /* LiveTVChannelsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B2DDF32979A8540017CBCE /* LiveTVChannelsViewModel.swift */; };
 		A3B2DDF62979AB3C0017CBCE /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B2DDF52979AB3C0017CBCE /* Channel.swift */; };
 		A3B2DDFA297A02A70017CBCE /* AddChannelSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B2DDF9297A02A70017CBCE /* AddChannelSheet.swift */; };
 		A3BA071A297EEBF1009E2C34 /* AddChannelSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BA0719297EEBF1009E2C34 /* AddChannelSheetViewModel.swift */; };
+		A3C6B43A299E8A9F00383B29 /* LiveTvCategories.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3C6B439299E8A9F00383B29 /* LiveTvCategories.xcassets */; };
+		A3C6B43F299FC22400383B29 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C6B43E299FC22400383B29 /* Color.swift */; };
+		A3CB4EEA298D203B00ACFA27 /* AddSubscriptionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CB4EE9298D203B00ACFA27 /* AddSubscriptionSheet.swift */; };
 		A3D78E8528D83B6D00A4D8AC /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D78E8428D83B6D00A4D8AC /* ViewExtension.swift */; };
 		A3D78E8728D8404400A4D8AC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D78E8628D8404400A4D8AC /* ContentView.swift */; };
 		A3EF6F9E28DCAFB5006E45CE /* LiveTvView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EF6F9D28DCAFB5006E45CE /* LiveTvView.swift */; };
@@ -40,6 +55,10 @@
 
 /* Begin PBXFileReference section */
 		A303DDD528E223C500C283A2 /* SubscriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewModel.swift; sourceTree = "<group>"; };
+		A3052B5C2997EFEB0045793F /* SubscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionView.swift; sourceTree = "<group>"; };
+		A308B088299A5C53009C9247 /* LiveTVFavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveTVFavoritesViewModel.swift; sourceTree = "<group>"; };
+		A308B08A299A5D0B009C9247 /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
+		A308B08C299A8186009C9247 /* CategoryForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryForm.swift; sourceTree = "<group>"; };
 		A313A54C292A64200025E8E2 /* LiveTvCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveTvCategoryView.swift; sourceTree = "<group>"; };
 		A319CAD628E5E096007A3C95 /* LiveTvPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveTvPlayerView.swift; sourceTree = "<group>"; };
 		A319CADA28E5F0AF007A3C95 /* EpgChannelSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpgChannelSheet.swift; sourceTree = "<group>"; };
@@ -50,21 +69,31 @@
 		A31FDA2728D1005300DED3B8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A31FDA3128D1013200DED3B8 /* TabButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabButton.swift; sourceTree = "<group>"; };
 		A31FDA3328D1031300DED3B8 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		A3250CC02990137000E6E98A /* SubscriptionForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionForm.swift; sourceTree = "<group>"; };
 		A32A7D582981DE3E0097AEEE /* ArchiveChannelSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveChannelSheet.swift; sourceTree = "<group>"; };
 		A32A7D5A2982DA920097AEEE /* Playable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playable.swift; sourceTree = "<group>"; };
 		A3313CC329760C060096FC59 /* AddCategorySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategorySheet.swift; sourceTree = "<group>"; };
 		A34B72A528D139DF0021F910 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
-		A34B72AB28D14B780021F910 /* SubscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionView.swift; sourceTree = "<group>"; };
 		A34B72B128D154E10021F910 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A34B72B228D1D3890021F910 /* GroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupView.swift; sourceTree = "<group>"; };
 		A34B72B428D1E4E90021F910 /* StreamThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamThumbnail.swift; sourceTree = "<group>"; };
+		A357C2B52A9209BB001809B3 /* CKRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKRecord.swift; sourceTree = "<group>"; };
+		A357C2B72A924E82001809B3 /* BrowseChannelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseChannelView.swift; sourceTree = "<group>"; };
+		A357C2BA2A925269001809B3 /* ChooseCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCategoryView.swift; sourceTree = "<group>"; };
+		A357C2BC2A925274001809B3 /* ChooseChannelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseChannelView.swift; sourceTree = "<group>"; };
 		A37D8F932981AC4A00ED7E2A /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		A3AD77BC299A25AB00145EFB /* AddSubscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubscriptionView.swift; sourceTree = "<group>"; };
+		A3AD77BE299A25EF00145EFB /* SubscriptionsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsListView.swift; sourceTree = "<group>"; };
+		A3AD77C0299A267600145EFB /* SubscriptionDetailSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionDetailSheetView.swift; sourceTree = "<group>"; };
 		A3B2DDEF297999B50017CBCE /* LiveTVCategoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveTVCategoriesViewModel.swift; sourceTree = "<group>"; };
 		A3B2DDF1297999E80017CBCE /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		A3B2DDF32979A8540017CBCE /* LiveTVChannelsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveTVChannelsViewModel.swift; sourceTree = "<group>"; };
 		A3B2DDF52979AB3C0017CBCE /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		A3B2DDF9297A02A70017CBCE /* AddChannelSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChannelSheet.swift; sourceTree = "<group>"; };
 		A3BA0719297EEBF1009E2C34 /* AddChannelSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChannelSheetViewModel.swift; sourceTree = "<group>"; };
+		A3C6B439299E8A9F00383B29 /* LiveTvCategories.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = LiveTvCategories.xcassets; sourceTree = "<group>"; };
+		A3C6B43E299FC22400383B29 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		A3CB4EE9298D203B00ACFA27 /* AddSubscriptionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubscriptionSheet.swift; sourceTree = "<group>"; };
 		A3D78E8428D83B6D00A4D8AC /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		A3D78E8628D8404400A4D8AC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A3EF6F9D28DCAFB5006E45CE /* LiveTvView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveTvView.swift; sourceTree = "<group>"; };
@@ -78,12 +107,25 @@
 				A303DDD928E2DEC000C283A2 /* Cache in Frameworks */,
 				A34B72A128D135D40021F910 /* XtreamCodesKit in Frameworks */,
 				A34B72A428D135EE0021F910 /* CachedAsyncImage in Frameworks */,
+				A3250CB6299012A200E6E98A /* FormValidator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A3052B5B2997EFC30045793F /* Subscriptions */ = {
+			isa = PBXGroup;
+			children = (
+				A3052B5C2997EFEB0045793F /* SubscriptionView.swift */,
+				A3AD77BC299A25AB00145EFB /* AddSubscriptionView.swift */,
+				A3CB4EE9298D203B00ACFA27 /* AddSubscriptionSheet.swift */,
+				A3AD77BE299A25EF00145EFB /* SubscriptionsListView.swift */,
+				A3AD77C0299A267600145EFB /* SubscriptionDetailSheetView.swift */,
+			);
+			path = Subscriptions;
+			sourceTree = "<group>";
+		};
 		A31FDA1328D1005200DED3B8 = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +150,9 @@
 				A3B2DDF1297999E80017CBCE /* Config.swift */,
 				A31FDA1F28D1005300DED3B8 /* IPTVMeApp.swift */,
 				A31FDA2328D1005300DED3B8 /* Assets.xcassets */,
+				A3C6B439299E8A9F00383B29 /* LiveTvCategories.xcassets */,
+				A3C6B43D299FC21700383B29 /* Extension */,
+				A3250CBF2990137000E6E98A /* Form */,
 				A31FDA2F28D100A700DED3B8 /* Model */,
 				A31FDA2628D1005300DED3B8 /* Preview Content */,
 				A31FDA2E28D100A100DED3B8 /* View */,
@@ -141,6 +186,7 @@
 				A34B72A528D139DF0021F910 /* Category.swift */,
 				A3B2DDF52979AB3C0017CBCE /* Channel.swift */,
 				A32A7D5A2982DA920097AEEE /* Playable.swift */,
+				A308B08A299A5D0B009C9247 /* Favorite.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -152,21 +198,40 @@
 				A303DDD528E223C500C283A2 /* SubscriptionViewModel.swift */,
 				A3B2DDEF297999B50017CBCE /* LiveTVCategoriesViewModel.swift */,
 				A3B2DDF32979A8540017CBCE /* LiveTVChannelsViewModel.swift */,
+				A308B088299A5C53009C9247 /* LiveTVFavoritesViewModel.swift */,
 				A3BA0719297EEBF1009E2C34 /* AddChannelSheetViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A3250CBF2990137000E6E98A /* Form */ = {
+			isa = PBXGroup;
+			children = (
+				A3250CC02990137000E6E98A /* SubscriptionForm.swift */,
+				A308B08C299A8186009C9247 /* CategoryForm.swift */,
+			);
+			path = Form;
 			sourceTree = "<group>";
 		};
 		A32A7D572981AC970097AEEE /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				A3D78E8628D8404400A4D8AC /* ContentView.swift */,
-				A34B72AB28D14B780021F910 /* SubscriptionView.swift */,
 				A3EF6F9A28DCAF81006E45CE /* LiveTV */,
 				A3EF6F9B28DCAF92006E45CE /* Movies */,
 				A3EF6F9C28DCAF97006E45CE /* Series */,
+				A3052B5B2997EFC30045793F /* Subscriptions */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		A357C2B92A92524C001809B3 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				A357C2BA2A925269001809B3 /* ChooseCategoryView.swift */,
+				A357C2BC2A925274001809B3 /* ChooseChannelView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		A37D8F902981ABF100ED7E2A /* Buttons */ = {
@@ -195,9 +260,19 @@
 			path = Interface;
 			sourceTree = "<group>";
 		};
+		A3C6B43D299FC21700383B29 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A3C6B43E299FC22400383B29 /* Color.swift */,
+				A357C2B52A9209BB001809B3 /* CKRecord.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		A3EF6F9A28DCAF81006E45CE /* LiveTV */ = {
 			isa = PBXGroup;
 			children = (
+				A357C2B92A92524C001809B3 /* Components */,
 				A32A7D582981DE3E0097AEEE /* ArchiveChannelSheet.swift */,
 				A3313CC329760C060096FC59 /* AddCategorySheet.swift */,
 				A3B2DDF9297A02A70017CBCE /* AddChannelSheet.swift */,
@@ -205,6 +280,7 @@
 				A313A54C292A64200025E8E2 /* LiveTvCategoryView.swift */,
 				A319CAD628E5E096007A3C95 /* LiveTvPlayerView.swift */,
 				A3EF6F9D28DCAFB5006E45CE /* LiveTvView.swift */,
+				A357C2B72A924E82001809B3 /* BrowseChannelView.swift */,
 			);
 			path = LiveTV;
 			sourceTree = "<group>";
@@ -243,6 +319,7 @@
 				A34B72A028D135D40021F910 /* XtreamCodesKit */,
 				A34B72A328D135EE0021F910 /* CachedAsyncImage */,
 				A303DDD828E2DEC000C283A2 /* Cache */,
+				A3250CB5299012A200E6E98A /* FormValidator */,
 			);
 			productName = "IPTV Me";
 			productReference = A31FDA1C28D1005300DED3B8 /* IPTV Me.app */;
@@ -275,6 +352,7 @@
 			packageReferences = (
 				A34B72A228D135EE0021F910 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
 				A303DDD728E2DEC000C283A2 /* XCRemoteSwiftPackageReference "Cache" */,
+				A3250CB4299012A200E6E98A /* XCRemoteSwiftPackageReference "SwiftUIFormValidator" */,
 			);
 			productRefGroup = A31FDA1D28D1005300DED3B8 /* Products */;
 			projectDirPath = "";
@@ -292,6 +370,7 @@
 			files = (
 				A31FDA2828D1005300DED3B8 /* Preview Assets.xcassets in Resources */,
 				A31FDA2428D1005300DED3B8 /* Assets.xcassets in Resources */,
+				A3C6B43A299E8A9F00383B29 /* LiveTvCategories.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,30 +381,43 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3AD77BF299A25EF00145EFB /* SubscriptionsListView.swift in Sources */,
 				A319CAD728E5E096007A3C95 /* LiveTvPlayerView.swift in Sources */,
+				A3C6B43F299FC22400383B29 /* Color.swift in Sources */,
 				A32A7D592981DE3E0097AEEE /* ArchiveChannelSheet.swift in Sources */,
 				A32A7D5B2982DA920097AEEE /* Playable.swift in Sources */,
 				A31FDA3228D1013200DED3B8 /* TabButton.swift in Sources */,
 				A34B72B328D1D3890021F910 /* GroupView.swift in Sources */,
 				A37D8F942981AC4A00ED7E2A /* PlayerView.swift in Sources */,
+				A3250CC12990137000E6E98A /* SubscriptionForm.swift in Sources */,
+				A3AD77C1299A267600145EFB /* SubscriptionDetailSheetView.swift in Sources */,
 				A3EF6F9E28DCAFB5006E45CE /* LiveTvView.swift in Sources */,
 				A3B2DDF0297999B50017CBCE /* LiveTVCategoriesViewModel.swift in Sources */,
+				A3AD77BD299A25AB00145EFB /* AddSubscriptionView.swift in Sources */,
+				A357C2BB2A925269001809B3 /* ChooseCategoryView.swift in Sources */,
 				A31FDA2028D1005300DED3B8 /* IPTVMeApp.swift in Sources */,
 				A3313CC429760C060096FC59 /* AddCategorySheet.swift in Sources */,
+				A3052B5D2997EFEB0045793F /* SubscriptionView.swift in Sources */,
 				A3B2DDFA297A02A70017CBCE /* AddChannelSheet.swift in Sources */,
-				A34B72AC28D14B780021F910 /* SubscriptionView.swift in Sources */,
 				A319CADB28E5F0AF007A3C95 /* EpgChannelSheet.swift in Sources */,
 				A3D78E8728D8404400A4D8AC /* ContentView.swift in Sources */,
 				A3B2DDF42979A8540017CBCE /* LiveTVChannelsViewModel.swift in Sources */,
+				A308B08B299A5D0B009C9247 /* Favorite.swift in Sources */,
 				A3D78E8528D83B6D00A4D8AC /* ViewExtension.swift in Sources */,
 				A31FDA3428D1031300DED3B8 /* ContentViewModel.swift in Sources */,
 				A303DDD628E223C500C283A2 /* SubscriptionViewModel.swift in Sources */,
 				A3B2DDF2297999E80017CBCE /* Config.swift in Sources */,
+				A3CB4EEA298D203B00ACFA27 /* AddSubscriptionSheet.swift in Sources */,
+				A357C2B62A9209BB001809B3 /* CKRecord.swift in Sources */,
 				A3BA071A297EEBF1009E2C34 /* AddChannelSheetViewModel.swift in Sources */,
 				A3B2DDF62979AB3C0017CBCE /* Channel.swift in Sources */,
 				A34B72A628D139DF0021F910 /* Category.swift in Sources */,
+				A357C2BD2A925274001809B3 /* ChooseChannelView.swift in Sources */,
 				A313A54D292A64200025E8E2 /* LiveTvCategoryView.swift in Sources */,
+				A308B089299A5C53009C9247 /* LiveTVFavoritesViewModel.swift in Sources */,
 				A34B72B528D1E4E90021F910 /* StreamThumbnail.swift in Sources */,
+				A308B08D299A8186009C9247 /* CategoryForm.swift in Sources */,
+				A357C2B82A924E82001809B3 /* BrowseChannelView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,6 +542,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Sources/Entitlements.entitlements;
 				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -479,10 +572,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.swenvanzanten.IPTVMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,3";
 			};
 			name = Debug;
 		};
@@ -493,6 +588,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Sources/Entitlements.entitlements;
 				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -522,10 +618,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.swenvanzanten.IPTVMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,3";
 			};
 			name = Release;
 		};
@@ -561,6 +659,14 @@
 				minimumVersion = 6.0.0;
 			};
 		};
+		A3250CB4299012A200E6E98A /* XCRemoteSwiftPackageReference "SwiftUIFormValidator" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ShabanKamell/SwiftUIFormValidator.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.0;
+			};
+		};
 		A34B72A228D135EE0021F910 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/lorenzofiamingo/swiftui-cached-async-image";
@@ -576,6 +682,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A303DDD728E2DEC000C283A2 /* XCRemoteSwiftPackageReference "Cache" */;
 			productName = Cache;
+		};
+		A3250CB5299012A200E6E98A /* FormValidator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A3250CB4299012A200E6E98A /* XCRemoteSwiftPackageReference "SwiftUIFormValidator" */;
+			productName = FormValidator;
 		};
 		A34B72A028D135D40021F910 /* XtreamCodesKit */ = {
 			isa = XCSwiftPackageProductDependency;

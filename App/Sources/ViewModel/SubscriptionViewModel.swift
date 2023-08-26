@@ -3,6 +3,10 @@ import XtreamCodesKit
 import CloudKit
 
 class SubscriptionViewModel: ObservableObject {
+    enum SubscriptionViewModelError: Error {
+        case noRecordIDSetError(subscription: Subscription)
+    }
+    
     /// The CloudKit container to use.
     private let container = CKContainer(identifier: Config.cloudKitContainerIdentifier)
 
@@ -10,6 +14,7 @@ class SubscriptionViewModel: ObservableObject {
     private lazy var database = container.privateCloudDatabase
     
     @Published var subscriptions: [Subscription] = []
+    @Published var selectedSubscription: Subscription? = nil
     
     init() {
         fetchSubscriptions()
@@ -26,7 +31,9 @@ class SubscriptionViewModel: ObservableObject {
         do {
             try await database.save(record)
             
-            subscriptions.append(subscription)
+            DispatchQueue.main.async {
+                self.subscriptions.append(Subscription(record: record))
+            }
         } catch let functionError {
             print(functionError)
         }
@@ -39,7 +46,21 @@ class SubscriptionViewModel: ObservableObject {
     
     func deleteSubscription(subscription: Subscription) async throws
     {
-        //
+        guard let recordID = subscription.recordID else {
+            throw SubscriptionViewModelError.noRecordIDSetError(subscription: subscription)
+        }
+
+        DispatchQueue.main.async {
+            let itemIndex = self.subscriptions.firstIndex { sub in
+                return subscription == sub
+            }
+
+            if let itemIndex = itemIndex {
+                self.subscriptions.remove(at: itemIndex)
+            }
+        }
+
+        try await database.deleteRecord(withID: recordID)
     }
     
     func fetchSubscriptions()
@@ -66,7 +87,6 @@ class SubscriptionViewModel: ObservableObject {
     private func handleSubscriptionRecord(recordResult: Result<CKRecord, Error>) {
         switch recordResult {
         case .success(let subscription):
-            print(subscription)
             self.subscriptions.append(.init(record: subscription))
         case .failure(let error):
             print(error)
@@ -75,6 +95,17 @@ class SubscriptionViewModel: ObservableObject {
 }
 
 extension Subscription {
+    private static var _recordIDComputedProperty = [String: CKRecord.ID]()
+
+    var recordID: CKRecord.ID? {
+        get {
+            return Subscription._recordIDComputedProperty[self.hashValue.description] ?? nil
+        }
+        set(newValue) {
+            Subscription._recordIDComputedProperty[self.hashValue.description] = newValue
+        }
+    }
+
     init(record: CKRecord) {
         self.init(
             name: record["name"] as! String,
@@ -82,5 +113,7 @@ extension Subscription {
             password: record["key"] as! String,
             host: record["host"] as! String
         )
+        
+        self.recordID = record.recordID
     }
 }

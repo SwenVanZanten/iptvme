@@ -33,6 +33,30 @@ struct LiveTvCategoryView: View {
                             }
                         }
                         .buttonStyle(.plain)
+                        .contextMenu {
+                            Button("Play") {
+                                openPlayable(channel: channel)
+                            }
+                            Divider()
+                            Button("Show EPG") {
+                                channelsVM.selectedChannel = channel
+                                showEpgChannelSheet = true
+                            }
+                            Button("Show archive") {
+                                channelsVM.selectedChannel = channel
+                                showArchiveChannelSheet = true
+                            }
+                            Divider()
+                            Button("Delete") {
+                                Task {
+                                    do {
+                                        try await channelsVM.deleteChannel(channel)
+                                    } catch {
+                                        print(error)
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -164,26 +188,30 @@ struct ChannelActionButton: ButtonStyle {
 
 struct ChannelButton_Previews: PreviewProvider {
     static var previews: some View {
-        ChannelButton(channel: .init(name: "Ziggo Sport SELECT", categoryId: CKRecord.ID(recordName: ""), liveSteam: .init(
-            id: 1,
-            number: 1,
+        ChannelButton(channel: .init(
             name: "Ziggo Sport SELECT",
-            icon: URL(string: "http://logo.protv.cc/picons/logos/ziggosportselecthd.png")!,
-            epgChannelId: "ZiggoSportSelect.nl",
-            added: "1443760634",
-            categoryId: "3",
-            customSid: "0",
-            tvArchive: true,
-            directSource: "",
-            tvArchiveDuration: "3"
-        )), play: {
+            categoryId: CKRecord.ID(recordName: "preview"),
+            liveSteam: .init(
+                id: 1,
+                number: 1,
+                name: "Ziggo Sport SELECT",
+                icon: URL(string: "http://logo.protv.cc/picons/logos/ziggosportselecthd.png")!,
+                epgChannelId: "ZiggoSportSelect.nl",
+                added: "1443760634",
+                categoryId: "3",
+                customSid: "0",
+                tvArchive: true,
+                directSource: "",
+                tvArchiveDuration: "3"
+            )
+        ), play: {
             //
         }, epg: {
             //
         }, archive: {
             //
         })
-        .frame(width: 250)
+        .frame(width: 230)
     }
 }
 

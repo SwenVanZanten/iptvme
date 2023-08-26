@@ -73,29 +73,7 @@ struct AddChannelSheetChooseCategoryView: View {
     @State var category: String = ""
     
     var body: some View {
-        VStack(spacing: -1) {
-            HStack {
-                TextField("Category name", text: $category)
-                    .textFieldStyle(.roundedBorder)
-                    .padding(3)
-            }
-            .border(Color("sheetSeparator"))
-            List(categories.filter({ category in
-                if (self.category == "") {
-                    return true
-                }
-                
-                return category.name.lowercased().contains(self.category.lowercased())
-            })) { category in
-                NavigationLink(category.name, value: category)
-            }
-            #if os(macOS)
-            .listStyle(.bordered(alternatesRowBackgrounds: true))
-            #else
-            .listStyle(.inset)
-            #endif
-            .border(Color("sheetSeparator"))
-        }
+        ChooseCategoryView(categories: $categories)
         .task {
             do {
                 categories = try await contentVM.api.liveTvCategories()
@@ -117,29 +95,7 @@ struct AddChannelSheetChooseChannelView: View {
     @State var channel: String = ""
     
     var body: some View {
-        VStack(spacing: -1) {
-            HStack {
-                TextField("Channel name", text: $channel)
-                    .textFieldStyle(.roundedBorder)
-                    .padding(3)
-            }
-            .border(Color("sheetSeparator"))
-            List(channels.filter({ channel in
-                if (self.channel == "") {
-                    return true
-                }
-                
-                return channel.name.lowercased().contains(self.channel.lowercased())
-            })) { channel in
-                NavigationLink(channel.name, value: channel)
-            }
-            #if os(macOS)
-            .listStyle(.bordered(alternatesRowBackgrounds: true))
-            #else
-            .listStyle(.inset)
-            #endif
-            .border(Color("sheetSeparator"))
-        }
+        ChooseChannelView(channels: $channels)
         .task {
             do {
                 addChannelSheetVM.selectedCategory = category
